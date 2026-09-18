@@ -1,0 +1,77 @@
+.footer {
+  border-top: 1px solid var(--line);
+  margin-top: var(--s9);
+  background: var(--canvas);
+}
+
+.dentro {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: var(--s7);
+  padding-block: var(--s8) var(--s7);
+}
+
+.colonna p {
+  margin: 0 0 var(--s4);
+}
+
+.colonna address,
+address.colonna {
+  font-style: normal;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: var(--s5);
+}
+
+.claim,
+.orari {
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 34ch;
+}
+
+.colonna ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--s3);
+}
+
+.colonna ul a {
+  text-decoration: none;
+  font-size: 15px;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--t-micro) var(--ease);
+}
+
+.colonna ul a:hover {
+  border-bottom-color: var(--brass);
+}
+
+.basso {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s3);
+  padding-block: var(--s5);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.basso p {
+  margin: 0;
+  max-width: 80ch;
+}
+
+@media (max-width: 860px) {
+  .dentro {
+    grid-template-columns: 1fr;
+    gap: var(--s6);
+    padding-block: var(--s7) var(--s6);
+  }
+}

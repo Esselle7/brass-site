@@ -1,0 +1,27 @@
+.banner {
+  background: var(--rust);
+  color: var(--ink); /* 6,83:1 — verificato da scripts/check-contrasto.mjs */
+  border-bottom: 1px solid rgba(232, 228, 220, 0.2);
+}
+
+.dentro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s2) var(--s4);
+  padding-block: var(--s4);
+}
+
+.titolo {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-variation-settings: "opsz" 30;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  font-size: 17px;
+}
+
+.testo {
+  margin: 0;
+  font-size: 15px;
+  max-width: 80ch;
+}

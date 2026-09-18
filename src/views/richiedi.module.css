@@ -1,0 +1,55 @@
+.testata {
+  padding-block: clamp(48px, 7vw, 88px) var(--s6);
+  max-width: 62ch;
+}
+
+.intro {
+  color: var(--muted);
+  margin-top: var(--s5);
+}
+
+.colonne {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(32px, 6vw, 88px);
+  padding-bottom: clamp(56px, 8vw, 104px);
+  align-items: start;
+}
+
+.lato {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s6);
+}
+
+.lato h2 {
+  font-size: clamp(22px, 2.2vw, 28px);
+  margin-bottom: var(--s5);
+}
+
+.passi {
+  margin: 0;
+  padding-left: 1.2em;
+  display: grid;
+  gap: var(--s4);
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.passi::marker {
+  color: var(--brass);
+}
+
+.nota {
+  margin: var(--s6) 0 0;
+  padding-top: var(--s5);
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .colonne {
+    grid-template-columns: 1fr;
+  }
+}

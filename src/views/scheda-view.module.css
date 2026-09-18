@@ -1,0 +1,127 @@
+.briciole {
+  display: flex;
+  gap: var(--s2);
+  align-items: center;
+  color: var(--muted);
+  font-size: 14px;
+  padding-block: var(--s5) 0;
+}
+
+.briciole a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.briciole a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--brass);
+}
+
+.scheda {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(32px, 5vw, 72px);
+  padding-block: var(--s6) var(--s8);
+  align-items: start;
+}
+
+.figura {
+  position: relative;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.img {
+  width: 100%;
+  height: auto;
+}
+
+.didascalia {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: var(--s3);
+  max-width: 44ch;
+}
+
+.colonnaTesto h1 {
+  font-size: clamp(32px, 4vw, 60px);
+}
+
+.codice {
+  color: var(--brass);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  font-size: 14px;
+  margin-bottom: var(--s3);
+}
+
+.nomeEn {
+  color: var(--muted);
+  margin-top: var(--s2);
+  font-size: 16px;
+}
+
+.processo {
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 58ch;
+  margin-block: var(--s5) var(--s6);
+}
+
+.azioni {
+  display: grid;
+  gap: var(--s4);
+  justify-items: start;
+  margin-top: var(--s6);
+}
+
+.prevNext {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s4);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding-block: var(--s5);
+  font-size: 15px;
+}
+
+.prevNext a {
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.prevNext a:hover {
+  color: var(--brass);
+}
+
+.avanti {
+  margin-left: auto;
+  text-align: right;
+}
+
+.correlate {
+  padding-block: clamp(48px, 7vw, 88px);
+}
+
+.correlateIntro {
+  color: var(--muted);
+  max-width: 62ch;
+  margin-top: var(--s4);
+}
+
+.grigliaCorrelate {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--s5);
+  margin-top: var(--s6);
+}
+
+@media (max-width: 900px) {
+  .scheda {
+    grid-template-columns: 1fr;
+  }
+}

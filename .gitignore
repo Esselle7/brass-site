@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
+.design-preview.html
+
+.env.local
+.env
+data/richieste/
+.validate-tmp/
+.playwright-mcp/
+tsconfig.validate.json
+tsconfig.seo.json

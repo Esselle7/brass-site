@@ -1,0 +1,85 @@
+.testata {
+  padding-block: clamp(48px, 7vw, 88px) var(--s7);
+  max-width: 68ch;
+}
+
+.intro {
+  color: var(--muted);
+  margin-top: var(--s5);
+}
+
+.griglia {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--s5);
+  padding-bottom: clamp(48px, 7vw, 88px);
+}
+
+.slot {
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--s4);
+}
+
+.figura {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: var(--s2);
+  aspect-ratio: 3 / 2;
+  background: var(--surface-2);
+  border-radius: var(--radius);
+  text-align: center;
+  padding: var(--s4);
+}
+
+.etichetta {
+  color: var(--rust-chiaro);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.formato {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.titolo {
+  font-size: 18px;
+  margin-top: var(--s4);
+}
+
+.tipo {
+  margin: var(--s2) 0 0;
+  font-size: 15px;
+}
+
+.nota {
+  margin: var(--s2) 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.intanto {
+  border-top: 1px solid var(--line);
+  padding-block: clamp(48px, 7vw, 88px);
+  display: grid;
+  gap: var(--s4);
+  justify-items: start;
+  max-width: 62ch;
+}
+
+.intanto p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.azioni {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3);
+  margin-top: var(--s3);
+}

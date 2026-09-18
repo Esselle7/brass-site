@@ -1,0 +1,191 @@
+.testata {
+  padding-block: clamp(48px, 7vw, 96px) var(--s7);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: end;
+}
+
+.sommario {
+  color: var(--muted);
+  font-size: 18px;
+  max-width: 52ch;
+  margin: 0;
+}
+
+.storia {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: clamp(32px, 5vw, 80px);
+  padding-bottom: clamp(48px, 7vw, 88px);
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+}
+
+.numeri {
+  display: grid;
+  gap: var(--s5);
+  margin: 0;
+  border-left: 1px solid var(--line);
+  padding-left: var(--s5);
+}
+
+.numeri dt {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-variation-settings: "opsz" 30;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 1;
+  color: var(--brass);
+  font-variant-numeric: tabular-nums;
+}
+
+.numeri dd {
+  margin: var(--s2) 0 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.stabilimento,
+.macchine,
+.ciclo,
+.dati {
+  padding-block: clamp(40px, 6vw, 80px);
+  border-bottom: 1px solid var(--line);
+}
+
+.introSezione {
+  color: var(--muted);
+  max-width: 64ch;
+  margin-top: var(--s4);
+}
+
+.slot {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--s4);
+  margin-top: var(--s6);
+}
+
+.placeholder {
+  display: grid;
+  align-content: center;
+  gap: var(--s2);
+  aspect-ratio: 3 / 2;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--s5);
+  text-align: center;
+}
+
+.placeholderEtichetta {
+  color: var(--rust-chiaro);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.placeholderTitolo {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.placeholderNota {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.placeholderTesto {
+  margin-top: var(--s5);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: var(--s5);
+  color: var(--muted);
+  max-width: 72ch;
+  font-size: 15px;
+}
+
+.ciclo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+.ciclo h2 {
+  grid-column: 1 / -1;
+}
+
+.fasi {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.fasi li {
+  border-bottom: 1px solid var(--line);
+}
+
+.fasi a {
+  display: flex;
+  gap: var(--s4);
+  padding-block: var(--s3);
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.fasi a:hover {
+  color: var(--brass);
+}
+
+.fasePos {
+  color: var(--brass);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  padding-top: 3px;
+}
+
+.figuraCiclo {
+  margin: 0;
+}
+
+.figuraCiclo img {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.figuraCiclo figcaption {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: var(--s3);
+  max-width: 48ch;
+}
+
+.dati {
+  border-bottom: 0;
+  display: grid;
+  gap: var(--s6);
+  justify-items: start;
+  max-width: 760px;
+}
+
+@media (max-width: 900px) {
+  .testata,
+  .storia,
+  .ciclo {
+    grid-template-columns: 1fr;
+  }
+
+  .numeri {
+    border-left: 0;
+    padding-left: 0;
+    border-top: 1px solid var(--line);
+    padding-top: var(--s5);
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}

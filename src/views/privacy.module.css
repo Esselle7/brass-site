@@ -1,0 +1,26 @@
+.testata {
+  padding-block: clamp(48px, 7vw, 80px) var(--s6);
+  max-width: 62ch;
+}
+
+.intro {
+  color: var(--muted);
+  margin-top: var(--s5);
+}
+
+.corpo {
+  padding-bottom: clamp(56px, 8vw, 96px);
+}
+
+.corpo h2 {
+  font-size: clamp(22px, 2.2vw, 28px);
+  margin-top: var(--s7);
+  margin-bottom: var(--s4);
+}
+
+.corpo ul {
+  color: var(--muted);
+  display: grid;
+  gap: var(--s2);
+  padding-left: 1.1em;
+}

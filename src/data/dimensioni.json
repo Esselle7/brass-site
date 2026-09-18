@@ -1,0 +1,416 @@
+{
+  "full": {
+    "assemblaggio": [
+      1400,
+      933
+    ],
+    "borgognamaterico": [
+      872,
+      1162
+    ],
+    "bronzatura": [
+      1024,
+      1024
+    ],
+    "bronzoantico": [
+      882,
+      1151
+    ],
+    "brunitura": [
+      1400,
+      933
+    ],
+    "cloudyblue": [
+      887,
+      1256
+    ],
+    "cloudybronzedblue": [
+      912,
+      1283
+    ],
+    "cloudysmoked": [
+      824,
+      1206
+    ],
+    "crossed": [
+      865,
+      1226
+    ],
+    "crossedbronze": [
+      936,
+      1303
+    ],
+    "crossedbrown": [
+      907,
+      1229
+    ],
+    "effettomarmo1": [
+      867,
+      1253
+    ],
+    "effettomarmobianco": [
+      862,
+      1216
+    ],
+    "effettomarmorust": [
+      909,
+      1296
+    ],
+    "effettomarmotexture": [
+      951,
+      1306
+    ],
+    "effettomarmoverde": [
+      885,
+      1233
+    ],
+    "fresatura": [
+      1024,
+      1024
+    ],
+    "hero": [
+      2048,
+      1365
+    ],
+    "imballaggio": [
+      1400,
+      933
+    ],
+    "lavorazionimeccaniche": [
+      1400,
+      933
+    ],
+    "montaggio": [
+      1024,
+      1024
+    ],
+    "nuvolatoanticato": [
+      806,
+      1113
+    ],
+    "nuvolatochiaro": [
+      869,
+      1233
+    ],
+    "nuvolatomedio": [
+      838,
+      1303
+    ],
+    "nuvolatoscuro": [
+      788,
+      1307
+    ],
+    "ottoneglitter": [
+      870,
+      1276
+    ],
+    "patinatochiaro": [
+      936,
+      1280
+    ],
+    "patinatomedio": [
+      930,
+      1276
+    ],
+    "patinatorosa": [
+      877,
+      1279
+    ],
+    "progettazione": [
+      1400,
+      1050
+    ],
+    "prototipazione": [
+      1400,
+      1050
+    ],
+    "prototipazioneimballi": [
+      1400,
+      933
+    ],
+    "saldatore": [
+      1024,
+      1024
+    ],
+    "saldatura": [
+      1400,
+      933
+    ],
+    "sandedsilver": [
+      873,
+      1239
+    ],
+    "satinatocdf": [
+      896,
+      1358
+    ],
+    "sfumatof": [
+      911,
+      1293
+    ],
+    "trasparentebronzo": [
+      869,
+      1219
+    ],
+    "trasparenteburattato": [
+      753,
+      1227
+    ],
+    "trasparenteottone": [
+      900,
+      1217
+    ],
+    "trasparenterame": [
+      871,
+      1249
+    ],
+    "trasparenterameorbitale": [
+      925,
+      1307
+    ],
+    "trasporto": [
+      1254,
+      1254
+    ],
+    "verniciatura": [
+      1400,
+      933
+    ]
+  },
+  "grid": {
+    "borgognamaterico": [
+      560,
+      746
+    ],
+    "bronzoantico": [
+      560,
+      731
+    ],
+    "cloudyblue": [
+      560,
+      793
+    ],
+    "cloudybronzedblue": [
+      560,
+      788
+    ],
+    "cloudysmoked": [
+      560,
+      820
+    ],
+    "crossed": [
+      560,
+      794
+    ],
+    "crossedbronze": [
+      560,
+      780
+    ],
+    "crossedbrown": [
+      560,
+      759
+    ],
+    "effettomarmo1": [
+      560,
+      809
+    ],
+    "effettomarmobianco": [
+      560,
+      790
+    ],
+    "effettomarmorust": [
+      560,
+      798
+    ],
+    "effettomarmotexture": [
+      560,
+      769
+    ],
+    "effettomarmoverde": [
+      560,
+      780
+    ],
+    "nuvolatoanticato": [
+      560,
+      773
+    ],
+    "nuvolatochiaro": [
+      560,
+      795
+    ],
+    "nuvolatomedio": [
+      560,
+      871
+    ],
+    "nuvolatoscuro": [
+      560,
+      929
+    ],
+    "ottoneglitter": [
+      560,
+      821
+    ],
+    "patinatochiaro": [
+      560,
+      766
+    ],
+    "patinatomedio": [
+      560,
+      768
+    ],
+    "patinatorosa": [
+      560,
+      817
+    ],
+    "sandedsilver": [
+      560,
+      795
+    ],
+    "satinatocdf": [
+      560,
+      849
+    ],
+    "sfumatof": [
+      560,
+      795
+    ],
+    "trasparentebronzo": [
+      560,
+      786
+    ],
+    "trasparenteburattato": [
+      560,
+      913
+    ],
+    "trasparenteottone": [
+      560,
+      757
+    ],
+    "trasparenterame": [
+      560,
+      803
+    ],
+    "trasparenterameorbitale": [
+      560,
+      791
+    ]
+  },
+  "strip": {
+    "borgognamaterico": [
+      240,
+      320
+    ],
+    "bronzoantico": [
+      240,
+      313
+    ],
+    "cloudyblue": [
+      240,
+      340
+    ],
+    "cloudybronzedblue": [
+      240,
+      338
+    ],
+    "cloudysmoked": [
+      240,
+      351
+    ],
+    "crossed": [
+      240,
+      340
+    ],
+    "crossedbronze": [
+      240,
+      334
+    ],
+    "crossedbrown": [
+      240,
+      325
+    ],
+    "effettomarmo1": [
+      240,
+      347
+    ],
+    "effettomarmobianco": [
+      240,
+      339
+    ],
+    "effettomarmorust": [
+      240,
+      342
+    ],
+    "effettomarmotexture": [
+      240,
+      330
+    ],
+    "effettomarmoverde": [
+      240,
+      334
+    ],
+    "nuvolatoanticato": [
+      240,
+      331
+    ],
+    "nuvolatochiaro": [
+      240,
+      341
+    ],
+    "nuvolatomedio": [
+      240,
+      373
+    ],
+    "nuvolatoscuro": [
+      240,
+      398
+    ],
+    "ottoneglitter": [
+      240,
+      352
+    ],
+    "patinatochiaro": [
+      240,
+      328
+    ],
+    "patinatomedio": [
+      240,
+      329
+    ],
+    "patinatorosa": [
+      240,
+      350
+    ],
+    "sandedsilver": [
+      240,
+      341
+    ],
+    "satinatocdf": [
+      240,
+      364
+    ],
+    "sfumatof": [
+      240,
+      341
+    ],
+    "trasparentebronzo": [
+      240,
+      337
+    ],
+    "trasparenteburattato": [
+      240,
+      391
+    ],
+    "trasparenteottone": [
+      240,
+      325
+    ],
+    "trasparenterame": [
+      240,
+      344
+    ],
+    "trasparenterameorbitale": [
+      240,
+      339
+    ]
+  }
+}

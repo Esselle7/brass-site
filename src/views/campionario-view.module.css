@@ -1,0 +1,51 @@
+.testata {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s7);
+  align-items: end;
+  padding-block: clamp(48px, 7vw, 88px) var(--s7);
+}
+
+.intro p {
+  max-width: 56ch;
+}
+
+.nota {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.campionario {
+  padding-bottom: clamp(56px, 8vw, 96px);
+}
+
+.famiglie {
+  border-top: 1px solid var(--line);
+  padding-block: clamp(48px, 7vw, 88px);
+}
+
+.elencoFamiglie {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--s6) var(--s7);
+  margin: var(--s6) 0 0;
+}
+
+.elencoFamiglie dt {
+  font-weight: 600;
+  margin-bottom: var(--s2);
+}
+
+.elencoFamiglie dd {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 46ch;
+}
+
+@media (max-width: 860px) {
+  .testata {
+    grid-template-columns: 1fr;
+    gap: var(--s5);
+  }
+}

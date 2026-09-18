@@ -1,0 +1,356 @@
+/*
+ * Design system — direzione A «La Materia» sulla struttura di C, tipografia B.
+ * Palette campionata dai 29 campioni reali (docs/design-directions.md): ogni hex viene da
+ * un'immagine del cliente, non da un generatore. I rapporti di contrasto dichiarati nei commenti
+ * sono verificati da scripts/check-contrasto.mjs, che fallisce se scendono sotto soglia.
+ *
+ * Una sola sorgente di verità per ogni regola: qui stanno i token e gli elementi di base,
+ * i componenti hanno il loro CSS Module. Niente stile duplicato in due file (era il debito §2.8).
+ */
+
+:root {
+  /* colore */
+  --canvas: #0e0d0d; /* dominante 29% di brunitura.png */
+  --surface: #1a1613; /* ombra di crossedbronze, desaturata */
+  --surface-2: #231d19;
+  --ink: #e8e4dc; /* 15,31:1 su canvas */
+  --muted: #a99d87; /* schiarito rispetto a #8D826E: 7,26:1 su canvas, 4,5:1+ anche su surface-2 */
+  --brass: #c9a95e; /* dominante 22% di trasparenteottone.png — 8,61:1 su canvas */
+  --brass-hi: #ebcb72; /* alta luce: bordi e hover */
+  --rust: #713e2a; /* accento rarissimo: alert, «in sviluppo» */
+  --rust-chiaro: #c98f74; /* etichette dei segnaposto su fondo scuro */
+  --line: rgba(232, 228, 220, 0.14);
+  --line-strong: rgba(232, 228, 220, 0.28);
+
+  /* spazio — scala 4/8/12/16/24/32/48/64/96/128 */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 64px;
+  --s9: 96px;
+  --s10: 128px;
+
+  --gutter: clamp(20px, 5vw, 72px);
+  --h-nav: 76px;
+  --max: 1360px;
+  --radius: 4px;
+
+  /* movimento — ease-out-expo: parte deciso e si posa, niente rimbalzi */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-micro: 260ms;
+  --t-apri: 480ms;
+  --t-lento: 900ms;
+
+  /* z-index semantico */
+  --z-nav: 10;
+  --z-barra: 20;
+  --z-dialog: 40;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+/* La barra di navigazione è fissa: il contenuto parte sotto. L'hero della home annulla
+   questo spazio con un margin-top negativo, perché il suo media deve andare a filo schermo. */
+main {
+  padding-top: var(--h-nav);
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-testo), system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  text-wrap: balance;
+  /* rete di sicurezza: nessun titolo esce dalla sua colonna, nemmeno «OSSIDAZIONE» a 88px */
+  overflow-wrap: break-word;
+}
+
+h1,
+h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-variation-settings: "opsz" 30;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(38px, 6.2vw, 88px);
+  line-height: 1;
+  letter-spacing: 0.005em;
+}
+
+h2 {
+  font-size: clamp(28px, 3.4vw, 46px);
+  line-height: 1.04;
+  letter-spacing: 0.012em;
+}
+
+h3 {
+  font-family: var(--font-testo), system-ui, sans-serif;
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0 0 var(--s4);
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Il cursore di sistema resta visibile ovunque: nessuna regola che lo nasconda (debito §2.6). */
+:focus-visible {
+  outline: 2px solid var(--brass-hi);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--brass);
+  color: var(--canvas);
+}
+
+/* ——— utility condivise ——— */
+
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.prosa {
+  max-width: 68ch;
+}
+
+.prosa p {
+  margin-bottom: var(--s5);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.salta {
+  position: absolute;
+  left: var(--s4);
+  top: -60px;
+  z-index: 100;
+  background: var(--brass);
+  color: var(--canvas);
+  padding: var(--s3) var(--s4);
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  transition: top var(--t-micro) var(--ease);
+}
+
+.salta:focus {
+  top: var(--s4);
+}
+
+/* Bottoni — UNO solo: pastiglia a filo d'ottone, il pieno sale da sotto al passaggio.
+   Niente coppia «pieno + vuoto» affiancati: l'azione secondaria è un link con la freccia. */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 28px;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 169, 94, 0.5);
+  background: transparent;
+  color: var(--brass-hi); /* 12,31:1 su canvas */
+  font: inherit;
+  font-weight: 600;
+  font-size: 12.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    color var(--t-apri) var(--ease),
+    border-color var(--t-apri) var(--ease);
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(100deg, var(--brass), var(--brass-hi));
+  translate: 0 101%;
+  transition: translate var(--t-apri) var(--ease);
+}
+
+.btn::after {
+  content: "→";
+  font-size: 15px;
+  letter-spacing: 0;
+  translate: 0 0;
+  transition: translate var(--t-apri) var(--ease);
+}
+
+.btn:hover {
+  color: var(--canvas); /* 8,61:1 sul pieno ottone */
+  border-color: var(--brass-hi);
+}
+
+.btn:hover::before {
+  translate: 0 0;
+}
+
+.btn:hover::after {
+  translate: 4px 0;
+}
+
+/* Variante quieta: stessa forma, nessun pieno. Per le azioni di servizio nelle pagine interne. */
+.btn--fantasma {
+  color: var(--brass);
+  border-color: var(--line-strong);
+}
+
+.btn--fantasma::before {
+  display: none;
+}
+
+.btn--fantasma:hover {
+  color: var(--brass-hi);
+  border-color: var(--brass);
+}
+
+.btn[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Link di testo */
+.link {
+  color: var(--brass);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--line-strong);
+  transition: text-decoration-color var(--t-micro) var(--ease);
+}
+
+.link:hover {
+  color: var(--brass-hi);
+  text-decoration-color: currentColor;
+}
+
+/* Tabella tecnica — è la forma della scheda finitura */
+.specifiche {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specifiche th,
+.specifiche td {
+  text-align: left;
+  vertical-align: top;
+  padding: var(--s3) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.specifiche th {
+  width: 210px;
+  color: var(--muted);
+  font-weight: 500;
+  padding-right: var(--s4);
+}
+
+@media (max-width: 560px) {
+  .specifiche th,
+  .specifiche td {
+    display: block;
+    width: auto;
+    padding-bottom: 0;
+  }
+
+  .specifiche th {
+    border: 0;
+    padding-top: var(--s4);
+  }
+}
+
+.da-confermare {
+  color: var(--muted);
+  font-style: italic;
+}
+
+@media (max-width: 420px) {
+  :root {
+    --h-nav: 64px;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #111;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

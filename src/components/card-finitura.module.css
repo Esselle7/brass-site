@@ -1,0 +1,107 @@
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color var(--t-micro) var(--ease);
+}
+
+.card:hover {
+  border-color: var(--brass);
+}
+
+.figura {
+  display: block;
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*
+ * «Campione sotto luce radente»: un riflesso speculare segue il puntatore, come inclinare un
+ * campione fisico sotto una lampada. 0 KB di libreria — due custom properties aggiornate da un
+ * solo listener delegato sulla griglia (src/components/Campionario.tsx).
+ */
+.luce {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  background: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.85),
+    rgba(255, 255, 255, 0) 45%
+  );
+  transition: opacity 320ms var(--ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .luce {
+    opacity: 1;
+  }
+}
+
+.meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s3);
+  padding: var(--s4) var(--s4) calc(var(--s4) + 2px);
+}
+
+.nome {
+  display: block;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-variation-settings: "opsz" 30;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  /* nomi lunghi come «Trasparente Rame Orbitale» non devono traboccare a 320px */
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.fam {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.codice {
+  color: var(--brass);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .luce {
+    display: none;
+  }
+}
+
+/* Su card strette il codice non sta sulla stessa riga del nome: va sopra, non tagliato. */
+@media (max-width: 560px) {
+  .meta {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: var(--s1);
+    padding: var(--s3);
+  }
+}

@@ -1,0 +1,120 @@
+.apri {
+  position: absolute;
+  right: var(--s3);
+  bottom: var(--s3);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--canvas);
+  background: var(--brass);
+  border: 0;
+  border-radius: var(--radius);
+  padding: 9px 14px;
+  cursor: pointer;
+  transition: background var(--t-micro) var(--ease);
+}
+
+.apri:hover {
+  background: var(--brass-hi);
+}
+
+.dialog {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  max-width: min(100vw - 32px, 1100px);
+  max-height: calc(100vh - 32px);
+  color: var(--ink);
+}
+
+.dialog::backdrop {
+  background: rgba(8, 7, 7, 0.9);
+}
+
+.dialog[open] {
+  animation: apri var(--t-apri) var(--ease);
+}
+
+@keyframes apri {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+.contenuto {
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.img {
+  width: 100%;
+  max-height: min(72vh, 900px);
+  object-fit: contain;
+  background: var(--canvas);
+}
+
+.barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s3);
+  padding: var(--s4);
+  border-top: 1px solid var(--line);
+}
+
+.titolo {
+  margin: 0;
+  font-size: 15px;
+}
+
+.codice {
+  color: var(--brass);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-right: var(--s2);
+}
+
+.navigazione {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.freccia {
+  color: var(--muted);
+  font-size: 14px;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.freccia:hover {
+  color: var(--ink);
+  border-bottom-color: var(--brass);
+}
+
+.chiudi {
+  font: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 7px 14px;
+  cursor: pointer;
+}
+
+.chiudi:hover {
+  border-color: var(--brass);
+  color: var(--brass);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dialog[open] {
+    animation: none;
+  }
+}

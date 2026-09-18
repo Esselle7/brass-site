@@ -1,0 +1,15 @@
+.selettore {
+  font-size: 14px;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  transition: color var(--t-micro) var(--ease), border-color var(--t-micro) var(--ease);
+  white-space: nowrap;
+}
+
+.selettore:hover {
+  color: var(--ink);
+  border-color: var(--line-strong);
+}

@@ -1,0 +1,63 @@
+.testata {
+  padding-block: clamp(48px, 7vw, 88px) var(--s6);
+  max-width: 62ch;
+}
+
+.intro {
+  color: var(--muted);
+  margin-top: var(--s5);
+}
+
+.colonne {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 88px);
+  padding-bottom: clamp(56px, 8vw, 104px);
+  align-items: start;
+}
+
+.blocco h2 {
+  padding-bottom: var(--s4);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: var(--s5);
+}
+
+.dati {
+  font-style: normal;
+  font-size: 17px;
+}
+
+.dati p {
+  margin-bottom: var(--s5);
+}
+
+.secondario {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.rimandi h3 {
+  margin-bottom: var(--s3);
+}
+
+.rimandi ul {
+  margin: 0;
+  padding-left: 1.1em;
+  color: var(--muted);
+  display: grid;
+  gap: var(--s3);
+  font-size: 15px;
+  max-width: 46ch;
+}
+
+.introForm {
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: var(--s5);
+}
+
+@media (max-width: 900px) {
+  .colonne {
+    grid-template-columns: 1fr;
+  }
+}

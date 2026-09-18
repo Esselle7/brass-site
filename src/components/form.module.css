@@ -1,0 +1,139 @@
+.form {
+  display: grid;
+  gap: var(--s5);
+  max-width: 52ch;
+}
+
+.campo {
+  display: grid;
+  gap: var(--s2);
+}
+
+.campo label,
+.finiture legend {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.campo input {
+  font: inherit;
+  font-size: 16px;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+}
+
+.campo input::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+/* :user-invalid e non :invalid — un campo ancora da compilare non è un errore da segnalare */
+.campo input:user-invalid {
+  border-color: var(--rust-chiaro);
+}
+
+.finiture {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s4);
+  margin: 0;
+}
+
+.finiture legend {
+  padding-inline: var(--s2);
+}
+
+.vuoto {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.chip {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  margin: 0;
+  padding: 0;
+}
+
+.chip li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  border: 1px solid var(--brass);
+  color: var(--brass);
+  border-radius: 999px;
+  padding: 6px 8px 6px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.chip button {
+  font: inherit;
+  font-size: 18px;
+  line-height: 1;
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.chip button:hover {
+  color: var(--ink);
+}
+
+.trappola {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.consenso {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--s3);
+  align-items: start;
+  font-size: 15px;
+  color: var(--muted);
+}
+
+.consenso input {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  accent-color: var(--brass);
+}
+
+.errore {
+  margin: 0;
+  border: 1px solid var(--rust);
+  border-radius: var(--radius);
+  background: rgba(113, 62, 42, 0.18);
+  color: var(--ink);
+  padding: var(--s4);
+  font-size: 15px;
+}
+
+.esito {
+  display: grid;
+  gap: var(--s4);
+  justify-items: start;
+  max-width: 56ch;
+  border: 1px solid var(--brass);
+  border-radius: var(--radius);
+  padding: var(--s6);
+}
+
+.esito p {
+  margin: 0;
+  color: var(--muted);
+}

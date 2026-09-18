@@ -1,0 +1,37 @@
+.contatore {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  text-decoration: none;
+  font-size: 14px;
+  color: var(--brass);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 8px 14px;
+  transition: border-color var(--t-micro) var(--ease);
+}
+
+.contatore:hover {
+  border-color: var(--brass);
+}
+
+.numero {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.etichetta {
+  color: var(--muted);
+}
+
+@media (max-width: 620px) {
+  .etichetta {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .contatore {
+    padding: 6px 10px;
+  }
+}
