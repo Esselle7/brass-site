@@ -1,25 +1,41 @@
-import { appendFile, mkdir } from "node:fs/promises";
-import { join } from "node:path";
-import { azienda } from "@/data/azienda";
-import { finiture } from "@/data/finiture";
+import { azienda } from "../../src/data/azienda";
+import { finiture } from "../../src/data/finiture";
 
-export const runtime = "nodejs";
+/**
+ * Cloudflare Pages Function: il sito è un export statico (next.config.ts `output: "export"`),
+ * quindi l'endpoint vive qui e non come route handler di Next.
+ *
+ * Binding richiesti sul progetto Pages:
+ * - KV namespace `RICHIESTE` (persistenza: invariante SPEC §3 «una richiesta non si perde mai»)
+ * - variabili RESEND_API_KEY, RESEND_FROM, RICHIESTE_A
+ */
+type Env = {
+  RICHIESTE: { put(key: string, value: string): Promise<void> };
+  RESEND_API_KEY?: string;
+  RESEND_FROM?: string;
+  RICHIESTE_A?: string;
+};
 
 /**
  * Endpoint della richiesta campioni.
  *
  * Invariante SPEC §3: «una richiesta di preventivo non si perde mai». Quindi l'ordine è
- * 1) valida  2) SCRIVI su disco  3) prova a mandare l'email.
+ * 1) valida  2) SCRIVI su KV  3) prova a mandare l'email.
  * Se l'invio email fallisce la richiesta è già persistita e l'utente vede un errore esplicito
  * con i recapiti diretti — mai un «grazie» su un invio fallito.
  *
- * L'email passa da Resend (scelta del committente): la chiave sta in .env.local, MAI nel repo.
+ * L'email passa da Resend (scelta del committente): la chiave sta nelle variabili d'ambiente
+ * del progetto Pages (e in .env.local in locale), MAI nel repo.
  */
 
 const CODICI = new Set(finiture.map((f) => f.codice));
 const MAX_TESTO = 200;
 
-/** Rate limit elementare in memoria: 5 richieste per IP ogni 10 minuti. */
+/**
+ * Rate limit elementare in memoria: 5 richieste per IP ogni 10 minuti.
+ * ponytail: su Workers la Map vive nel singolo isolate, quindi il tetto è per-isolate e non globale.
+ * Se lo spam diventa reale, spostare il contatore su KV/Durable Object.
+ */
 const finestra = 10 * 60 * 1000;
 const tetto = 5;
 const visite = new Map<string, number[]>();
@@ -39,7 +55,7 @@ const testo = (v: unknown, max = MAX_TESTO) =>
 // nel dominio, niente spazi): l'unico modo di sapere se un'email esiste è scriverle.
 const emailValida = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);
 
-export async function POST(req: Request) {
+export async function onRequestPost({ request: req, env }: { request: Request; env: Env }) {
   const ip =
     req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     req.headers.get("x-real-ip") ||
@@ -93,10 +109,10 @@ export async function POST(req: Request) {
 
   // 1) persistenza PRIMA dell'invio: se qui fallisce, non si va avanti e lo si dice.
   try {
-    const cartella = join(process.cwd(), "data", "richieste");
-    await mkdir(cartella, { recursive: true });
-    const giorno = richiesta.ricevutaIl.slice(0, 10);
-    await appendFile(join(cartella, `${giorno}.jsonl`), `${JSON.stringify(richiesta)}\n`, "utf8");
+    // una chiave per richiesta (timestamp + suffisso casuale): KV non ha append, e due invii
+    // nello stesso millisecondo non devono sovrascriversi.
+    const chiaveKv = `${richiesta.ricevutaIl}-${crypto.randomUUID().slice(0, 8)}`;
+    await env.RICHIESTE.put(chiaveKv, JSON.stringify(richiesta));
   } catch (e) {
     console.error("[richiesta] persistenza fallita", e);
     return Response.json(
@@ -109,9 +125,9 @@ export async function POST(req: Request) {
   }
 
   // 2) invio email
-  const chiave = process.env.RESEND_API_KEY;
-  const mittente = process.env.RESEND_FROM;
-  const destinatario = process.env.RICHIESTE_A ?? azienda.email;
+  const chiave = env.RESEND_API_KEY;
+  const mittente = env.RESEND_FROM;
+  const destinatario = env.RICHIESTE_A ?? azienda.email;
 
   if (!chiave || !mittente) {
     console.warn("[richiesta] RESEND_API_KEY/RESEND_FROM assenti: richiesta salvata, email non inviata");

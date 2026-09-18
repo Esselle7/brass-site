@@ -4,6 +4,8 @@ import { lavorazioni } from "@/data/lavorazioni";
 import { azienda } from "@/data/azienda";
 import { hrefFinitura, hrefLavorazione, percorsi, type Lingua } from "@/lib/i18n";
 
+export const dynamic = "force-static";
+
 /** Una sola sorgente: le rotte nascono dagli stessi dati che generano le pagine, in due lingue. */
 export default function sitemap(): MetadataRoute.Sitemap {
   const url = (p: string) => `${azienda.sito}${p}`;

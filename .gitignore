@@ -13,3 +13,4 @@ data/richieste/
 .playwright-mcp/
 tsconfig.validate.json
 tsconfig.seo.json
+.check/
